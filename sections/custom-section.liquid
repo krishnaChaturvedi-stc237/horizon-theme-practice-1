@@ -1,0 +1,212 @@
+<section class="hero-section" style="background-image: url('{{ section.settings.background_image | img_url: 'master' }}');">
+  <div class="content-wrapper">
+
+    <!-- LEFT SIDE TEXT CONTENT -->
+    <div class="left">
+      <p class="caption">{{ section.settings.caption_text }}</p>
+      <h2 class="heading">{{ section.settings.heading_text }}</h2>
+    </div>
+
+    <!-- RIGHT SIDE TABS + CONTENT -->
+    <div class="right">
+
+      <!-- TAB BUTTONS -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="men">MEN</button>
+        <button class="tab-btn" data-tab="women">WOMEN</button>
+      </div>
+
+      <!-- MEN IMAGES WRAPPER -->
+      <div class="tab-content men active fade">
+        {% for block in section.blocks %}
+          {% if block.type == "men_images" %}
+            <div class="product-card fade">
+              <img src="{{ block.settings.image_picker | img_url: '600x600' }}" alt="">
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <!-- WOMEN IMAGES WRAPPER -->
+      <div class="tab-content women fade">
+        {% for block in section.blocks %}
+          {% if block.type == "women_images" %}
+            <div class="product-card fade">
+              <img src="{{ block.settings.image_picker | img_url: '600x600' }}" alt="">
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── JS TAB SWITCH ───────────── -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const tabs = document.querySelectorAll(".tab-btn");
+    const contents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+
+        // Active tab button styling
+        tabs.forEach(btn => btn.classList.remove("active"));
+        tab.classList.add("active");
+
+        // Showing respective content
+        const target = tab.dataset.tab;
+        contents.forEach(content => {
+          content.classList.remove("active");
+          if (content.classList.contains(target)) {
+            content.classList.add("active");
+          }
+        });
+      });
+    });
+  });
+</script>
+
+<!-- ───────────── CSS STYLING ───────────── -->
+<style>
+.hero-section {
+  background-size: cover;
+  background-position: center;
+  padding: 120px 60px;
+  color: white;
+}
+
+.content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.left {
+  width: 40%;
+}
+
+.left .caption {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.left .heading {
+  font-size: 60px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.right {
+  width: 55%;
+}
+
+.tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.tab-btn {
+  padding: 10px 25px;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: 1px solid white;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+  background: white;
+  color: #c16a2b;
+  border-color: white;
+}
+
+.tab-content {
+  display: none;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.tab-content.active {
+  display: flex;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.product-card {
+  width: 30%;
+  border-radius: 15px;
+  overflow: hidden;
+  background: white;
+  padding: 10px;
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+@keyframes fadeIn {
+  from {opacity:0; transform: translateY(10px);}
+  to {opacity:1; transform: translateY(0);}
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .content-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+  .left, .right {
+    width: 100%;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Hero Tab Switcher",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "caption_text",
+      "label": "Caption Text",
+      "default": "SKINCARE"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading Text",
+      "default": "ESSENTIALS"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Men Image",
+      "type": "men_images",
+      "settings": [
+        { "type": "image_picker", "id": "image_picker", "label": "Men Image" }
+      ]
+    },
+    {
+      "name": "Women Image",
+      "type": "women_images",
+      "settings": [
+        { "type": "image_picker", "id": "image_picker", "label": "Women Image" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Hero Tab Switcher" }
+  ]
+}
+{% endschema %}
