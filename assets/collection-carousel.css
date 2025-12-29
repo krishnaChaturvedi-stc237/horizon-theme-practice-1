@@ -48,3 +48,7 @@
   font-size: 0.75rem;
   color: red;
 }
+
+.collection-carousel__swiper .swiper-wrapper {
+  display: flex;
+}
