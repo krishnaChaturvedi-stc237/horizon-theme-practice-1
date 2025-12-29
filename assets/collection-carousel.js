@@ -6,10 +6,7 @@ function initCollectionCarousel(section) {
         return;
     }
 
-    console.log('[CollectionCarousel] init section', section.dataset.sectionId, {
-        showPagination: section.dataset.showPagination,
-        showNavigation: section.dataset.showNavigation,
-    });
+    console.log('[CollectionCarousel] init section', section.dataset.sectionId);
 
     const swiperEl = section.querySelector('.swiper');
     if (!swiperEl) {
@@ -22,9 +19,6 @@ function initCollectionCarousel(section) {
         console.debug('[CollectionCarousel]', section.dataset.sectionId, 'already initialized');
         return;
     }
-
-    const showPagination = section.dataset.showPagination === 'true';
-    const showNavigation = section.dataset.showNavigation === 'true';
 
     // Swiper attaches itself to window.Swiper when loaded via a regular script tag
     const SwiperCtor = window.Swiper;
@@ -44,14 +38,12 @@ function initCollectionCarousel(section) {
         spaceBetween: 16,
         watchOverflow: true,
         pagination: {
-            el: section.querySelector('.swiper-pagination'),
+            el: swiperEl.querySelector('.swiper-pagination'),
             clickable: true,
-            enabled: showPagination,
         },
         navigation: {
-            nextEl: section.querySelector('.swiper-button-next'),
-            prevEl: section.querySelector('.swiper-button-prev'),
-            enabled: showNavigation,
+            nextEl: swiperEl.querySelector('.swiper-button-next'),
+            prevEl: swiperEl.querySelector('.swiper-button-prev'),
         },
         breakpoints: {
             640: {
