@@ -95,7 +95,7 @@
       "name": "Collection Carousel",
       "settings": {
         "collection": "shoes-copy",
-        "heading": "Accessories",
+        "heading": "",
         "max_products": 8,
         "show_pagination": false
       }
