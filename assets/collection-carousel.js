@@ -9,8 +9,8 @@ function initCollectionCarousel(section) {
 
   const showPagination = section.dataset.showPagination === 'true';
 
-  // Support both global Swiper and window.Swiper
-  const SwiperCtor = window.Swiper || Swiper;
+  // Swiper attaches itself to window.Swiper when loaded via a regular script tag
+  const SwiperCtor = window.Swiper;
   if (typeof SwiperCtor !== 'function') {
     console.warn('Swiper library not found for collection carousel section', section.dataset.sectionId);
     return;
