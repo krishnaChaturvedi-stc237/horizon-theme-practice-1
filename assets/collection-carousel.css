@@ -1,5 +1,9 @@
+/* ===============================
+   Section base
+================================ */
+
 .collection-carousel__container {
- width: 100%;
+  width: 100%;
 }
 
 .collection-carousel__header {
@@ -9,50 +13,74 @@
   margin-bottom: 16px;
 }
 
+/* ===============================
+   Swiper normalization
+================================ */
+
 .collection-carousel__swiper {
-  overflow: hidden;
-   width: 100%;
-}
-
-.collection-carousel .swiper-slide {
-  height: auto;
-}
-
-/* Simple card layout for the carousel */
-.collection-carousel-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.collection-carousel-card__image {
   width: 100%;
-  height: auto;
-  display: block;
-}
-
-.collection-carousel-card__title {
-  margin: 0.25rem 0;
-  font-size: 1rem;
-}
-
-.collection-carousel-card__price {
-  margin: 0;
-}
-
-.collection-carousel-card__form {
-  margin-top: 0.5rem;
-}
-
-.collection-carousel__debug {
-  font-size: 0.75rem;
-  color: red;
+  overflow: hidden;
 }
 
 .collection-carousel__swiper .swiper-wrapper {
   display: flex;
+  align-items: stretch; /* KEY: equal height slides */
 }
 
 .collection-carousel__swiper .swiper-slide {
+  height: auto;
+  display: flex;        /* allow card to stretch */
   flex-shrink: 0;
+}
+
+/* ===============================
+   Product card normalization
+================================ */
+
+.collection-carousel__swiper product-card {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.collection-carousel__swiper .product-card__content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===============================
+   Button alignment fix
+================================ */
+
+/* Push quick add to bottom */
+.collection-carousel__swiper .quick-add {
+  margin-top: auto;
+}
+
+/* ===============================
+   Optional consistency helpers
+================================ */
+
+/* Clamp title to 2 lines */
+.collection-carousel__swiper .product-card__title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.6em;
+}
+
+/* Optional: prevent gallery shrinking */
+.collection-carousel__swiper .card-gallery {
+  flex-shrink: 0;
+}
+
+/* ===============================
+   Debug (optional)
+================================ */
+
+.collection-carousel__debug {
+  font-size: 0.75rem;
+  color: red;
 }
