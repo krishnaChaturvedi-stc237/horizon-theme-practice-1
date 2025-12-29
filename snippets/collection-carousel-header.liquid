@@ -1,0 +1,14 @@
+<div class="collection-carousel__header">
+  <div class="collection-carousel__text">
+    {% if heading != blank %}
+      <h2>{{ heading }}</h2>
+    {% endif %}
+  </div>
+
+  <a
+    href="{{ collection.url }}"
+    class="collection-carousel__view-all"
+  >
+    View All →
+  </a>
+</div>
