@@ -1,6 +1,5 @@
 .collection-carousel__container {
-  width: 500px;
-  height: 500px;
+ width: 100%;
 }
 
 .collection-carousel__header {
