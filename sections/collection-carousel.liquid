@@ -1,4 +1,5 @@
-
+{{ 'collection-carousel.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'collection-carousel.js' | asset_url }}" defer></script>
 
 {% liquid
    assign collection = section.settings.collection
