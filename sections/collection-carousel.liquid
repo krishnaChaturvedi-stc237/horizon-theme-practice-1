@@ -25,7 +25,8 @@
             <div class="swiper-wrapper" >
                 {% for product in collection.products limit: max_products %}
                     <div class="swiper-slide">
-                        {% render 'collection-carousel-product-card', product: product %}
+                        {% comment %} {% render 'collection-carousel-product-card', product: product %} {% endcomment %}
+                         <div>{{ product.title }}</div>
                     </div>
                 {% endfor %}
             </div>
