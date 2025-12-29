@@ -94,8 +94,8 @@
       "type": "collection-carousel",
       "name": "Collection Carousel",
       "settings": {
-        "colletion": "trousers-pants-copy",
-        "heading": "Collection Carousel",
+        "collection": "trousers-pants-copy",
+        "heading": "Accessories",
         "max_products": 8,
         "show_pagination": false
       }
@@ -273,6 +273,7 @@
           ]
         }
       },
+      "disabled": true,
       "name": "Featured collection",
       "settings": {
         "collection": "all",
