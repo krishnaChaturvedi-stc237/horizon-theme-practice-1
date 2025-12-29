@@ -1,3 +1,6 @@
+/* global Swiper */
+
+
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.collection-carousel-section').forEach(section => {
         if (section instanceof HTMLElement) {
