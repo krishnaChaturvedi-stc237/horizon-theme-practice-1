@@ -1,0 +1,18 @@
+.collection-carousel__container {
+  width: 100%;
+}
+
+.collection-carousel__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 16px;
+}
+
+.collection-carousel__swiper {
+  overflow: hidden;
+}
+
+.collection-carousel .swiper-slide {
+  height: auto;
+}
