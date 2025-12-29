@@ -24,6 +24,9 @@
                     </div>
                 {% endfor %}
             </div>
+            {% if section.settings.show_pagination %}
+                <div class="swiper-pagination"></div>
+            {% endif %}
 
          </div>
 
