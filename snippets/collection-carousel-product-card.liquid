@@ -1,14 +1,52 @@
 {% comment %}
-  Wrapper for Horizon product card
+  Simple, reliable product card for the collection carousel.
+  - Does NOT depend on Horizon block configuration, so it always renders.
+  - Uses a native Shopify add-to-cart form (first available variant).
+  - Includes optional debug text in the theme editor.
 {% endcomment %}
 
-{% render 'product-card', 
-  product: product,
-  show_vendor: false,
-  show_rating: false,
-  show_quickview: false,
-  show_quickadd: true,
-  card_style: 'collection-carousel-card-style',
-  image_aspect_ratio: 'adapt',
-  show_swatches: false
-  %} 
+{% if product == blank %}
+  <div class="collection-carousel__debug">No product object found for this slide.</div>
+{% else %}
+  {%- liquid
+    assign variant = product.selected_or_first_available_variant
+    if variant == nil
+      assign variant = product.variants | first
+    endif
+  -%}
+
+  <article class="collection-carousel-card" data-product-id="{{ product.id }}">
+    {% if request.design_mode %}
+      <div class="collection-carousel__debug">
+        Carousel product: {{ product.title }} (ID: {{ product.id }})
+      </div>
+    {% endif %}
+
+    <a
+      href="{{ variant.url | default: product.url }}"
+      class="collection-carousel-card__link"
+    >
+      {% if product.featured_media %}
+        {{ product.featured_media | image_url: width: 600 | image_tag: class: 'collection-carousel-card__image', loading: 'lazy', alt: product.featured_media.alt | default: product.title }}
+      {% endif %}
+
+      <h3 class="collection-carousel-card__title">{{ product.title }}</h3>
+      <product-price class="collection-carousel-card__price">
+        {% render 'price', product_resource: product, show_unit_price: true %}
+      </product-price>
+    </a>
+
+    {% if variant %}
+      <form
+        method="post"
+        action="{{ routes.cart_add_url }}"
+        class="collection-carousel-card__form"
+      >
+        <input type="hidden" name="id" value="{{ variant.id }}">
+        <button type="submit" class="button button--primary">
+          {{ 'products.product.add_to_cart' | t | default: 'Add to cart' }}
+        </button>
+      </form>
+    {% endif %}
+  </article>
+{% endif %}

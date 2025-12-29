@@ -16,3 +16,34 @@
 .collection-carousel .swiper-slide {
   height: auto;
 }
+
+/* Simple card layout for the carousel */
+.collection-carousel-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.collection-carousel-card__image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.collection-carousel-card__title {
+  margin: 0.25rem 0;
+  font-size: 1rem;
+}
+
+.collection-carousel-card__price {
+  margin: 0;
+}
+
+.collection-carousel-card__form {
+  margin-top: 0.5rem;
+}
+
+.collection-carousel__debug {
+  font-size: 0.75rem;
+  color: red;
+}
