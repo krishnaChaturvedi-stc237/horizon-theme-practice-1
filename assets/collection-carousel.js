@@ -14,6 +14,7 @@ function initCollectionCarousel(section) {
   }
 
   const showPagination = section.dataset.showPagination === 'true';
+  const showNavigation = section.dataset.showNavigation === 'true';
 
   // Swiper attaches itself to window.Swiper when loaded via a regular script tag
   const SwiperCtor = window.Swiper;
@@ -28,21 +29,31 @@ function initCollectionCarousel(section) {
   // Initialize Swiper instance
   new SwiperCtor(swiperEl, {
     slidesPerView: 1.2,
+    slidesPerGroup: 1,
     spaceBetween: 16,
+    watchOverflow: true,
     pagination: showPagination
       ? {
           el: section.querySelector('.swiper-pagination'),
-          clickable: true
+          clickable: true,
         }
       : false,
+    navigation: showNavigation
+      ? {
+          nextEl: section.querySelector('.swiper-button-next'),
+          prevEl: section.querySelector('.swiper-button-prev'),
+        }
+      : undefined,
     breakpoints: {
       640: {
-        slidesPerView: 2.2
+        slidesPerView: 2,
+        slidesPerGroup: 2,
       },
       1024: {
-        slidesPerView: 4
-      }
-    }
+        slidesPerView: 5,
+        slidesPerGroup: 5,
+      },
+    },
   });
 }
 
