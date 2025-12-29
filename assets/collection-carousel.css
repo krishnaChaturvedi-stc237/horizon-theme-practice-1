@@ -1,6 +1,5 @@
 .collection-carousel__container {
  width: 100%;
- overflow: hidden;
 }
 
 .collection-carousel__header {
@@ -12,6 +11,7 @@
 
 .collection-carousel__swiper {
   overflow: hidden;
+   width: 100%;
 }
 
 .collection-carousel .swiper-slide {
