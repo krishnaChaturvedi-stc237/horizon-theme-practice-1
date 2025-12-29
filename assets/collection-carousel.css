@@ -52,3 +52,7 @@
 .collection-carousel__swiper .swiper-wrapper {
   display: flex;
 }
+
+.collection-carousel__swiper .swiper-slide {
+  flex-shrink: 0;
+}
