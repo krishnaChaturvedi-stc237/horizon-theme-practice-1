@@ -90,12 +90,12 @@
         "padding-block-end": 72
       }
     },
-    "collection_carousel_GCtf9b": {
+    "collection_carousel_wgFhxP": {
       "type": "collection-carousel",
       "name": "Collection Carousel",
       "settings": {
         "collection": "trousers-pants-copy",
-        "heading": "Access",
+        "heading": "",
         "max_products": 8,
         "show_pagination": false
       }
@@ -298,7 +298,7 @@
   },
   "order": [
     "hero_jVaWmY",
-    "collection_carousel_GCtf9b",
+    "collection_carousel_wgFhxP",
     "product_list_fa6P9H"
   ]
 }
