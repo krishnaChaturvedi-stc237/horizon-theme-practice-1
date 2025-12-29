@@ -16,12 +16,6 @@
   -%}
 
   <article class="collection-carousel-card" data-product-id="{{ product.id }}">
-    {% if request.design_mode %}
-      <div class="collection-carousel__debug">
-        Carousel product: {{ product.title }} (ID: {{ product.id }})
-      </div>
-    {% endif %}
-
     <a
       href="{{ variant.url | default: product.url }}"
       class="collection-carousel-card__link"
