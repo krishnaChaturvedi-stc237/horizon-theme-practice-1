@@ -94,7 +94,7 @@
       "type": "collection-carousel",
       "name": "Collection Carousel",
       "settings": {
-        "collection": "shoes-copy",
+        "collection": "trousers-pants-copy",
         "heading": "",
         "max_products": 8,
         "show_pagination": false
