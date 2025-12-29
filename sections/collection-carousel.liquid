@@ -17,7 +17,7 @@
       <div class="collection-carousel__container">
 
          {% render 'collection-carousel-header', 
-            heading: collection.title or section.settings.heading,
+            heading: section.settings.heading | default: collection.title,
             collection: collection
          %}
 
