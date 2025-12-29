@@ -9,8 +9,15 @@ function initCollectionCarousel(section) {
 
   const showPagination = section.dataset.showPagination === 'true';
 
-  // @ts-ignore
-  new window.Swiper(swiperEl, {
+  // Support both global Swiper and window.Swiper
+  const SwiperCtor = window.Swiper || Swiper;
+  if (typeof SwiperCtor !== 'function') {
+    console.warn('Swiper library not found for collection carousel section', section.dataset.sectionId);
+    return;
+  }
+
+  // Initialize Swiper instance
+  new SwiperCtor(swiperEl, {
     slidesPerView: 1.2,
     spaceBetween: 16,
     pagination: showPagination
@@ -24,22 +31,26 @@ function initCollectionCarousel(section) {
         slidesPerView: 2.2
       },
       1024: {
-        slidesPerView: 5
+        slidesPerView: 4
       }
     }
   });
 }
 
-/* Initial page load */
+// Initial page load
 document.addEventListener('DOMContentLoaded', () => {
-  document
-    .querySelectorAll('.collection-carousel-section')
-    .forEach(initCollectionCarousel);
+  document.querySelectorAll('.collection-carousel-section').forEach((section) => {
+    initCollectionCarousel(section);
+  });
 });
 
-/* Theme editor support */
+// Theme editor support
 document.addEventListener('shopify:section:load', (event) => {
-  const section = event.target.querySelector('.collection-carousel-section');
+  const sectionId = event.detail && event.detail.sectionId;
+  const section = sectionId
+    ? document.querySelector(`[data-section-id="${sectionId}"]`)
+    : event.target.querySelector('.collection-carousel-section');
+
   if (section) {
     initCollectionCarousel(section);
   }
