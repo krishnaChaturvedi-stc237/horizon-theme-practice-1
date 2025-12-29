@@ -27,7 +27,7 @@
                     <div class="swiper-slide">
                         {% comment %} {% render 'collection-carousel-product-card', product: product %} {% endcomment %}
                          <div>{{ product.title }}</div>
-                         <div>{{ collection.title }}</div>
+                         <div>{{ collection.title | append:"-any" }}</div>
                     </div>
                 {% endfor %}
             </div>
