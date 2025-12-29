@@ -1,5 +1,6 @@
 .collection-carousel__container {
  width: 100%;
+ overflow: hidden;
 }
 
 .collection-carousel__header {
