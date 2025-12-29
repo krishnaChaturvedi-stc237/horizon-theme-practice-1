@@ -4,6 +4,33 @@
 %}
 
 {% if collection != blank %}
+    <section
+     class="collection-carousel-section"
+     data-section-id="{{ section.id }}"
+     data-show-pagination="{{section.settings.show_pagination}}"
+    >
+      <div class="collection-carousel__container">
+
+         {% render 'collection-carousel-header', 
+            heading: section.settings.heading
+            collection: collection
+         %}
+
+         <div class="swiper collection-carousel__swiper" >
+            <div class="swiper-wrapper" >
+                {% for product in collection.products limit: max_products %}
+                    <div class="swiper-slide">
+                        {% render 'collection-carousel-product-card', product: product %}
+                    </div>
+                {% endfor %}
+            </div>
+
+         </div>
+
+      </div>
+
+
+    </section>
 
 {% endif %}
 
