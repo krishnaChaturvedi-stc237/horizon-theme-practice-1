@@ -6,6 +6,8 @@
 {% liquid
    assign collection = section.settings.collection
    assign max_products = section.settings.max_products | default: 4
+   assign heading_text = section.settings.heading | default: collection.title
+
 %}
 
 {% if collection != blank %}
@@ -17,7 +19,7 @@
       <div class="collection-carousel__container">
 
          {% render 'collection-carousel-header', 
-            heading: section.settings.heading | default: collection.title,
+            heading: heading_text,
             collection: collection
          %}
 
