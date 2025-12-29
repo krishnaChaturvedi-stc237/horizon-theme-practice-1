@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const showPagination = section.dataset.showPagination === 'true';
 
+    // @ts-ignore
     new window.Swiper(swiperEl, {
       slidesPerView: 1.2,
       spaceBetween: 16,
