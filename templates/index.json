@@ -63,7 +63,7 @@
         "media_type_1": "video",
         "image_1": "shopify://shop_images/Banner_image.webp",
         "media_type_2": "image",
-        "image_2": "shopify://shop_images/Banner_image_2.webp",
+        "image_2": "shopify://shop_images/Banner_image.webp",
         "stack_media_on_mobile": false,
         "custom_mobile_media": false,
         "media_type_1_mobile": "image",
