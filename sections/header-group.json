@@ -117,7 +117,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h2>COLORBAR</h2>",
+            "text": "",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
