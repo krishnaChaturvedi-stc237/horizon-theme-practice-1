@@ -1,6 +1,305 @@
+{% doc %}
+  @prompt
+    COLORBAR
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-colorbar-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .ai-colorbar-container-{{ ai_gen_id }} {
+    display: flex;
+    {% if block.settings.layout == 'horizontal' %}
+      flex-direction: row;
+    {% else %}
+      flex-direction: column;
+    {% endif %}
+    gap: {{ block.settings.gap }}px;
+    padding: {{ block.settings.padding }}px;
+    background-color: {{ block.settings.background_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    {% if block.settings.show_border %}
+      border: {{ block.settings.border_width }}px solid {{ block.settings.border_color }};
+    {% endif %}
+  }
+
+  .ai-colorbar-item-{{ ai_gen_id }} {
+    flex: 1;
+    min-height: {{ block.settings.bar_height }}px;
+    border-radius: {{ block.settings.item_border_radius }}px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  {% if block.settings.enable_hover %}
+    .ai-colorbar-item-{{ ai_gen_id }}:hover {
+      transform: scale({{ block.settings.hover_scale }});
+      opacity: 0.8;
+      cursor: pointer;
+    }
+  {% endif %}
+
+  @media screen and (max-width: 749px) {
+    .ai-colorbar-{{ ai_gen_id }} {
+      width: 100%;
+    }
+
+    .ai-colorbar-container-{{ ai_gen_id }} {
+      {% if block.settings.mobile_layout == 'vertical' %}
+        flex-direction: column;
+      {% else %}
+        flex-direction: row;
+      {% endif %}
+    }
+  }
+{% endstyle %}
+
+<div class="ai-colorbar-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-colorbar-container-{{ ai_gen_id }}">
+    {% if block.settings.color_1 != blank %}
+      <div
+        class="ai-colorbar-item-{{ ai_gen_id }}"
+        style="background-color: {{ block.settings.color_1 }};"
+      ></div>
+    {% endif %}
+
+    {% if block.settings.color_2 != blank %}
+      <div
+        class="ai-colorbar-item-{{ ai_gen_id }}"
+        style="background-color: {{ block.settings.color_2 }};"
+      ></div>
+    {% endif %}
+
+    {% if block.settings.color_3 != blank %}
+      <div
+        class="ai-colorbar-item-{{ ai_gen_id }}"
+        style="background-color: {{ block.settings.color_3 }};"
+      ></div>
+    {% endif %}
+
+    {% if block.settings.color_4 != blank %}
+      <div
+        class="ai-colorbar-item-{{ ai_gen_id }}"
+        style="background-color: {{ block.settings.color_4 }};"
+      ></div>
+    {% endif %}
+
+    {% if block.settings.color_5 != blank %}
+      <div
+        class="ai-colorbar-item-{{ ai_gen_id }}"
+        style="background-color: {{ block.settings.color_5 }};"
+      ></div>
+    {% endif %}
+
+    {% if block.settings.color_6 != blank %}
+      <div
+        class="ai-colorbar-item-{{ ai_gen_id }}"
+        style="background-color: {{ block.settings.color_6 }};"
+      ></div>
+    {% endif %}
+  </div>
+</div>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Color bar",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Desktop layout",
+      "options": [
+        {
+          "value": "horizontal",
+          "label": "Horizontal"
+        },
+        {
+          "value": "vertical",
+          "label": "Vertical"
+        }
+      ],
+      "default": "horizontal"
+    },
+    {
+      "type": "select",
+      "id": "mobile_layout",
+      "label": "Mobile layout",
+      "options": [
+        {
+          "value": "horizontal",
+          "label": "Horizontal"
+        },
+        {
+          "value": "vertical",
+          "label": "Vertical"
+        }
+      ],
+      "default": "horizontal"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "bar_height",
+      "label": "Bar height",
+      "min": 20,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap between colors",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Padding",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_1",
+      "label": "Color 1",
+      "default": "#FF6B6B"
+    },
+    {
+      "type": "color",
+      "id": "color_2",
+      "label": "Color 2",
+      "default": "#4ECDC4"
+    },
+    {
+      "type": "color",
+      "id": "color_3",
+      "label": "Color 3",
+      "default": "#45B7D1"
+    },
+    {
+      "type": "color",
+      "id": "color_4",
+      "label": "Color 4",
+      "default": "#FFA07A"
+    },
+    {
+      "type": "color",
+      "id": "color_5",
+      "label": "Color 5",
+      "default": "#98D8C8"
+    },
+    {
+      "type": "color",
+      "id": "color_6",
+      "label": "Color 6",
+      "default": "#F7DC6F"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Container border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "item_border_radius",
+      "label": "Color bar border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "show_border",
+      "label": "Show border",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "label": "Border width",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#E6E6E6"
+    },
+    {
+      "type": "header",
+      "content": "Hover effects"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_hover",
+      "label": "Enable hover effect",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "hover_scale",
+      "label": "Hover scale",
+      "min": 1,
+      "max": 1.5,
+      "step": 0.1,
+      "default": 1.1
+    }
+  ],
+  "presets": [
+    {
+      "name": "Color bar"
+    }
+  ]
+}
 {% endschema %}
