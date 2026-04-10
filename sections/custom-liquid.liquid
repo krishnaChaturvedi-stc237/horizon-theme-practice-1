@@ -1,75 +1,98 @@
-
-
-<div class="section-background color-{{ section.settings.color_scheme }}"></div>
-<div
-  class="section section--{{ section.settings.section_width }} spacing-style {% if section.settings.color_scheme != blank %}color-{{ section.settings.color_scheme }}{% endif %}"
-  style="{% render 'spacing-padding', settings: section.settings %}"
->
-  {{ section.settings.custom_liquid }}
-</div>
-
 {% schema %}
 {
-  "name": "t:names.custom_liquid",
-  "settings": [
-    {
-      "type": "liquid",
-      "id": "custom_liquid",
-      "label": "t:settings.custom_liquid",
-      "info": "t:info.custom_liquid"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "t:settings.color_scheme",
-      "default": "scheme-1"
-    },
-    {
-      "type": "select",
-      "id": "section_width",
-      "label": "t:settings.width",
-      "options": [
-        {
-          "value": "page-width",
-          "label": "t:options.page"
-        },
-        {
-          "value": "full-width",
-          "label": "t:options.full"
-        }
-      ],
-      "default": "page-width"
-    },
-    {
-      "type": "header",
-      "content": "t:content.padding"
-    },
-    {
-      "type": "range",
-      "id": "padding-block-start",
-      "label": "t:settings.top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "padding-block-end",
-      "label": "t:settings.bottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 0
-    }
-  ],
+  "name": "Custom Collection Section",
+  "settings": [],
   "presets": [
     {
-      "name": "t:names.custom_liquid",
-      "category": "t:categories.layout"
+      "name": "Custom Collection"
     }
   ]
 }
 {% endschema %}
+
+<style>
+.collection-section {
+  padding: 40px 20px;
+}
+
+.title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  transition: 0.4s;
+}
+
+.card:hover img {
+  transform: scale(1.1);
+}
+
+.overlay {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.overlay button {
+  padding: 10px 20px;
+  border: 1px solid black;
+  background: transparent;
+  cursor: pointer;
+}
+
+@media(min-width:700px){
+  .collection-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media(min-width:1150px){
+  .collection-grid {
+    grid-template-columns: repeat(3,1fr);
+  }
+}
+</style>
+
+<section class="collection-section">
+  <h2 class="title">Shop Our Signature Collection</h2>
+
+  <div class="collection-grid">
+
+    <a href="#" class="card">
+      <img src="https://via.placeholder.com/400x500">
+      <div class="overlay">
+        <button>DISCOVER</button>
+      </div>
+    </a>
+
+    <a href="#" class="card">
+      <img src="https://via.placeholder.com/400x500">
+      <div class="overlay">
+        <button>DISCOVER</button>
+      </div>
+    </a>
+
+    <a href="#" class="card">
+      <img src="https://via.placeholder.com/400x500">
+      <div class="overlay">
+        <button>DISCOVER</button>
+      </div>
+    </a>
+
+  </div>
+</section>
