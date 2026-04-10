@@ -16,7 +16,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<p>Browse our latest products</p>",
+            "text": "<p>SINFUL LIPCOLORS</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -60,8 +60,10 @@
       ],
       "name": "t:names.hero",
       "settings": {
-        "media_type_1": "image",
+        "media_type_1": "video",
+        "image_1": "shopify://shop_images/Banner_image.webp",
         "media_type_2": "image",
+        "image_2": "shopify://shop_images/Banner_image_2.webp",
         "stack_media_on_mobile": false,
         "custom_mobile_media": false,
         "media_type_1_mobile": "image",
@@ -96,8 +98,15 @@
       "settings": {
         "collection": "trousers-pants-copy",
         "heading": "",
+        "subheading": "",
         "max_products": 8,
-        "show_pagination": false
+        "show_pagination": false,
+        "show_navigation": true,
+        "section_width": "page-width",
+        "color_scheme": "",
+        "gap": 24,
+        "padding-block-start": 32,
+        "padding-block-end": 32
       }
     },
     "product_list_fa6P9H": {
